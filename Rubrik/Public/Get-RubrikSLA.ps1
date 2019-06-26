@@ -72,6 +72,7 @@ function Get-RubrikSLA
     $result = Test-ReturnFormat -api $api -result $result -location $resources.Result
     $result = Test-FilterObject -filter ($resources.Filter) -result $result
 
+    $result.ForEach{$_.PSObject.TypeNames.Insert(0,'Rubrik.SLAObject')}
     return $result
 
   } # End of process
